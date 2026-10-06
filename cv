@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yousif | Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    font-family:'Inter',sans-serif;
+    background:#08090d;
+    color:#fff;
+    overflow-x:hidden;
+}
+/* Background glow */
+body::before{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:#2563eb;
+    filter:blur(180px);
+    opacity:.12;
+    top:-200px;
+    left:-150px;
+    z-index:-1;
+}
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:#9333ea;
+    filter:blur(180px);
+    opacity:.10;
+    bottom:-200px;
+    right:-150px;
+    z-index:-1;
+}
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
+    width:92%;
+    max-width:1050px;
+    padding:14px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(13,14,19,.78);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    z-index:1000;
+}
+.logo{
+    font-size:20px;
+    font-weight:800;
+}
+.logo span{
+    color:#60a5fa;
+}
+.nav-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
+.nav-links a{
+    text-decoration:none;
+    color:#999;
+    font-size:14px;
+    transition:.3s;
+}
+.nav-links a:hover{
+    color:#fff;
+}
+.menu{
+    display:none;
+    font-size:25px;
+    cursor:pointer;
+}
+/* CONTAINER */
+.container{
+    width:90%;
+    max-width:1050px;
+    margin:auto;
+}
+/* HOME */
+.home{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:100px;
+}
+.home-grid{
+    display:grid;
+    grid-template-columns:1.3fr .7fr;
+    gap:60px;
+    align-items:center;
+}
+.badge{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:30px;
+    color:#60a5fa;
+    background:rgba(96,165,250,.08);
+    border:1px solid rgba(96,165,250,.2);
+    font-size:13px;
+    margin-bottom:20px;
+}
+h1{
+    font-size:clamp(45px,7vw,78px);
+    line-height:1.02;
+    letter-spacing:-4px;
+}
+h1 span{
+    background:linear-gradient(90deg,#60a5fa,#a78bfa);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+.home-text p{
+    color:#9297a3;
+    max-width:600px;
+    margin-top:25px;
+    font-size:17px;
+    line-height:1.8;
+}
+/* BUTTONS */
+.buttons{
+    display:flex;
+    gap:12px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+.btn{
+    text-decoration:none;
+    padding:13px 21px;
+    border-radius:12px;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+}
+.primary{
+    background:#fff;
+    color:#08090d;
+}
+.primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(255,255,255,.12);
+}
+.secondary{
+    color:#fff;
+    border:1px solid #292d37;
+}
+.secondary:hover{
+    background:#15171d;
+    transform:translateY(-3px);
+}
+/* PROFILE */
+.profile{
+    display:flex;
+    justify-content:center;
+}
+.profile-card{
+    width:285px;
+    height:355px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(145deg,#171920,#0d0e12);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:30px;
+    box-shadow:0 30px 80px rgba(0,0,0,.45);
+    animation:float 5s ease-in-out infinite;
+}
+.profile-img{
+    width:155px;
+    height:155px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid rgba(255,255,255,.08);
+    margin-bottom:22px;
+}
+.profile-card h3{
+    font-size:21px;
+}
+.profile-card p{
+    color:#858995;
+    font-size:14px;
+    margin-top:5px;
+}
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+/* SECTIONS */
+section{
+    padding:100px 0;
+}
+.section-title{
+    margin-bottom:45px;
+}
+.section-title small{
+    color:#60a5fa;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+.section-title h2{
+    font-size:40px;
+    margin-top:8px;
+}
+/* SKILLS */
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+}
+.skill{
+    padding:14px 20px;
+    background:#111318;
+    border:1px solid #252933;
+    border-radius:14px;
+    color:#ccc;
+    transition:.35s;
+}
+.skill:hover{
+    transform:translateY(-5px);
+    border-color:#60a5fa;
+    color:#fff;
+    box-shadow:0 10px 30px rgba(37,99,235,.12);
+}
+/* EXPERIENCE */
+.timeline{
+    border-left:1px solid #292d35;
+    padding-left:30px;
+}
+.timeline-item{
+    position:relative;
+    margin-bottom:45px;
+}
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-36px;
+    top:7px;
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:#60a5fa;
+    box-shadow:0 0 20px #60a5fa;
+}
+.date{
+    color:#60a5fa;
+    font-size:13px;
+}
+.timeline-item h3{
+    font-size:21px;
+    margin-top:5px;
+}
+.timeline-item p{
+    color:#858995;
+    margin-top:8px;
+    max-width:650px;
+}
+/* CONTACT */
+.contact{
+    text-align:center;
+}
+.contact .section-title{
+    margin-bottom:15px;
+}
+.contact-description{
+    color:#858995;
+    max-width:550px;
+    margin:0 auto 30px;
+}
+.socials{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+.social{
+    text-decoration:none;
+    color:#ddd;
+    padding:13px 20px;
+    border:1px solid #292d35;
+    border-radius:12px;
+    transition:.3s;
+}
+.social:hover{
+    background:#fff;
+    color:#000;
+    transform:translateY(-3px);
+}
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    color:#555;
+    font-size:13px;
+    border-top:1px solid #16181d;
+}
+/* ANIMATION */
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:1s;
+}
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+/* MOBILE */
+@media(max-width:800px){
+    nav{
+        width:94%;
+    }
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:65px;
+        left:0;
+        width:100%;
+        flex-direction:column;
+        padding:20px;
+        background:#101217;
+        border:1px solid #252832;
+        border-radius:15px;
+    }
+    .nav-links.show{
+        display:flex;
+    }
+    .menu{
+        display:block;
+    }
+    .home-grid{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+    .profile{
+        order:-1;
+    }
+    .profile-card{
+        width:235px;
+        height:290px;
+    }
+    .profile-img{
+        width:120px;
+        height:120px;
+    }
+    .home-text p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+    .buttons{
+        justify-content:center;
+    }
+    section{
+        padding:75px 0;
+    }
+    .section-title h2{
+        font-size:32px;
+    }
+    h1{
+        letter-spacing:-2px;
+    }
+}
+</style>
+</head>
+<body>
+<!-- ================= NAVIGATION ================= -->
+<nav>
+    <div class="logo">
+        Yousif<span>Subhi</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+        <li>
+            <a href="#home">Home</a>
+        </li>
+        <li>
+            <a href="#skills">Skills</a>
+        </li>
+        <li>
+            <a href="#experience">Experience</a>
+        </li>
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+    </ul>
+    <div class="menu" onclick="toggleMenu()">
+        ☰
+    </div>
+</nav>
+<!-- ================= HOME ================= -->
+<header class="home container" id="home">
+    <div class="home-grid">
+        <div class="home-text reveal">
+            <span class="badge">
+                Available for opportunities
+            </span>
+            <h1>
+                Hi, I'm
+                <span>Yusif Subhi</span>
+            </h1>
+            <p>
+                IT Specialist & Developer creating modern,
+                practical and professional digital solutions.
+            </p>
+            <div class="buttons">
+                <a href="#contact" class="btn primary">
+                    Contact Me
+                </a>
+                <!-- ضع رابط CV هنا -->
+                <a href="YOUR-CV-LINK.pdf"
+                   class="btn secondary"
+                   target="_blank">
+                    Download CV
+                </a>
+            </div>
+        </div>
+        <!-- PROFILE -->
+        <div class="profile reveal">
+            <div class="profile-card">
+                <!-- ضع رابط صورتك هنا -->
+                <img
+                    src="https://i.pravatar.cc/400"
+                    class="profile-img"
+                    alt="Yousif">
+                <h3>
+                    Yousif
+                </h3>
+                <p>
+                    IT Specialist
+                </p>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+    <div class="container reveal">
+        <div class="section-title">
+            <small>
+                01 — SKILLS
+            </small>
+            <h2>
+                My Skills
+            </h2>
+        </div>
+        <div class="skills">
+            <div class="skill">
+                HTML
+            </div>
+            <div class="skill">
+                CSS
+            </div>
+            <div class="skill">
+                JavaScript
+            </div>
+            <div class="skill">
+                C#
+            </div>
+            <div class="skill">
+                PHP
+            </div>
+            <div class="skill">
+                SQL
+            </div>
+            <div class="skill">
+                Microsoft Excel
+            </div>
+            <div class="skill">
+                Microsoft Access
+            </div>
+            <div class="skill">
+                Responsive Design
+            </div>
+            <div class="skill">
+                Problem Solving
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+    <div class="container reveal">
+        <div class="section-title">
+            <small>
+                02 — EXPERIENCE
+            </small>
+            <h2>
+                Experience
+            </h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="date">
+                    2026 — Present
+                </span>
+                <h3>
+                    IT & Web Development
+                </h3>
+                <p>
+                    Developing websites, digital tools and
+                    practical software solutions.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <span class="date">
+                    2025 — 2026
+                </span>
+                <h3>
+                    IT Training
+                </h3>
+                <p>
+                    Studied programming fundamentals,
+                    databases, web development and
+                    computer technologies.
+                </p>
+            </div>
+            <div class="timeline-item">
+                <span class="date">
+                    Previous Experience
+                </span>
+                <h3>
+                    Your Previous Job
+                </h3>
+                <p>
+                    Add your previous work experience
+                    and responsibilities here.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+    <div class="container contact reveal">
+        <div class="section-title">
+            <small>
+                03 — CONTACT
+            </small>
+            <h2>
+                Let's Connect
+            </h2>
+        </div>
+        <p class="contact-description">
+            Have a project, opportunity or idea?
+            Feel free to contact me.
+        </p>
+        <div class="socials">
+            <!-- EMAIL -->
+            <a
+                class="social"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=yousifsubhi88@gmail.com"
+                 target="_blank">
+                ✉ Email
+            </a>
+            <!-- WHATSAPP -->
+            <a
+                class="social"
+                href="https://wa.me/964XXXXXXXXXX"
+                target="_blank">
+                WhatsApp
+            </a>
+            
+            <!-- INSTAGRAM -->
+            <a
+                class="social"
+                href="https://www.instagram.com/yourusername"
+                target="_blank">
+                Instagram
+            </a>
+           
+        </div>
+    </div>
+</section>
+<!-- ================= FOOTER ================= -->
+<footer>
+    © 2026 Your Name — All Rights Reserved.
+</footer>
+<script>
+/* Mobile menu */
+function toggleMenu(){
+    document
+    .getElementById("navLinks")
+    .classList.toggle("show");
+}
+/* Close menu when clicking a link */
+document
+.querySelectorAll(".nav-links a")
+.forEach(link => {
+    link.addEventListener("click", () => {
+        document
+        .getElementById("navLinks")
+        .classList.remove("show");
+    });
+});
+/* Scroll animation */
+const reveals =
+document.querySelectorAll(".reveal");
+function revealOnScroll(){
+    reveals.forEach(element => {
+        const windowHeight =
+        window.innerHeight;
+        const elementTop =
+        element.getBoundingClientRect().top;
+        if(elementTop < windowHeight - 80){
+            element.classList.add("active");
+        }
+    });
+}
+window.addEventListener(
+    "scroll",
+    revealOnScroll
+);
+revealOnScroll();
+</script>
+</body>
+</html>
